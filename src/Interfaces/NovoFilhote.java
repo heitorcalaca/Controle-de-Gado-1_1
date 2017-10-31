@@ -406,10 +406,6 @@ public class NovoFilhote extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botaosairActionPerformed
 
     private void txtnomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnomeFocusLost
-        if (txtnome.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this.rootPane, "Insira o nome da matriz");
-            txtnome.grabFocus();
-        }
         try {
             String nome = txtnome.getText();
             MatrizesDAO dao = new MatrizesDAO();

@@ -16,11 +16,11 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRResultSetDataSource;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
+//import net.sf.jasperreports.engine.JRException;
+//import net.sf.jasperreports.engine.JRResultSetDataSource;
+//import net.sf.jasperreports.engine.JasperFillManager;
+//import net.sf.jasperreports.engine.JasperPrint;
+//import net.sf.jasperreports.view.JasperViewer;
 import Utilitários.VerificaDesmama;
 
 // Para fazer o calculo da data de desmama utilize a classe Calendar cal = GregorianCalendar.getInstance();!!!!!
@@ -100,6 +100,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_matrizes.add(menuitem_novaMatriz);
 
+        menuitem_matrizes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         menuitem_matrizes.setText("Matrizes");
         menuitem_matrizes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +133,7 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setText("Filhotes");
 
-        menuitem_novofilhote.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        menuitem_novofilhote.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         menuitem_novofilhote.setText("Novo Filhote");
         menuitem_novofilhote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +142,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(menuitem_novofilhote);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         jMenuItem1.setText("Desmamar Filhote");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,33 +232,33 @@ public class Principal extends javax.swing.JFrame {
 
     private void relMatrizesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relMatrizesActionPerformed
 
-        try {
-            String cmdsql = "select * from matrizes";
-            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
-            ResultSet rs = stmt.executeQuery();
-            JRResultSetDataSource relat = new JRResultSetDataSource(rs);
-            JasperPrint jp = JasperFillManager.fillReport("\\Documentos\\NetBeansProjects\\Controle de Gado 1_1\\src\\MyReports\\Matrizes.jasper", new HashMap(), relat);
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.setVisible(true);
-
-        } catch (SQLException | JRException ex) {
-            JOptionPane.showMessageDialog(this.rootPane, ex);
-        }
+//        try {
+//            String cmdsql = "select * from matrizes";
+//            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+//            ResultSet rs = stmt.executeQuery();
+//            JRResultSetDataSource relat = new JRResultSetDataSource(rs);
+//            JasperPrint jp = JasperFillManager.fillReport("\\Documentos\\NetBeansProjects\\Controle de Gado 1_1\\src\\MyReports\\Matrizes.jasper", new HashMap(), relat);
+//            JasperViewer jv = new JasperViewer(jp, false);
+//            jv.setVisible(true);
+//
+//        } catch (SQLException | JRException ex) {
+//            JOptionPane.showMessageDialog(this.rootPane, ex);
+//        }
     }//GEN-LAST:event_relMatrizesActionPerformed
 
     private void relCaracterísticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relCaracterísticasActionPerformed
-        try {
-            String cmdsql = "Select * from caracteristicas";
-            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
-            ResultSet rs = stmt.executeQuery();
-            JRResultSetDataSource relat = new JRResultSetDataSource(rs);
-            JasperPrint jp = JasperFillManager.fillReport("\\Documentos\\NetBeansProjects\\Controle de Gado 1_1\\src\\MyReports\\Caracteristicas.jasper", new HashMap(), relat);
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.setVisible(true);
-
-        } catch (SQLException | JRException ex) {
-            JOptionPane.showMessageDialog(this.rootPane, ex);
-        }
+//        try {
+//            String cmdsql = "Select * from caracteristicas";
+//            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+//            ResultSet rs = stmt.executeQuery();
+//            JRResultSetDataSource relat = new JRResultSetDataSource(rs);
+//            JasperPrint jp = JasperFillManager.fillReport("\\Documentos\\NetBeansProjects\\Controle de Gado 1_1\\src\\MyReports\\Caracteristicas.jasper", new HashMap(), relat);
+//            JasperViewer jv = new JasperViewer(jp, false);
+//            jv.setVisible(true);
+//
+//        } catch (SQLException | JRException ex) {
+//            JOptionPane.showMessageDialog(this.rootPane, ex);
+//        }
 
     }//GEN-LAST:event_relCaracterísticasActionPerformed
 

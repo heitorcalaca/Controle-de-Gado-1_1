@@ -61,10 +61,10 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txtdatanascimento" alignment="0" pref="77" max="32767" attributes="0"/>
                           <Component id="txtnumero" alignment="0" max="32767" attributes="0"/>
                           <Component id="cmbsituação" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtdatadesmama" alignment="0" pref="77" max="32767" attributes="0"/>
+                          <Component id="txtdatanascimento" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -77,7 +77,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtnumero" alignment="1" max="32767" attributes="0"/>
+                  <Component id="txtnumero" alignment="1" pref="21" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtnome" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -85,19 +85,17 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtdatanascimento" alignment="1" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmbcaracteristicas" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbcaracteristicas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtdatanascimento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="separate" pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtdatadesmama" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txtdatadesmama" alignment="1" pref="21" max="32767" attributes="0"/>
                           <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
@@ -162,18 +160,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtnomemae">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="txtdatanascimento">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.text.DefaultFormatterFactory(mascara)" type="code"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}"/>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;MaskFormatter mascara = new MaskFormatter(&quot;##/##/####&quot;); &#xa;mascara.setPlaceholderCharacter(&apos;_&apos;);"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
     </Component>
@@ -263,6 +249,11 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}"/>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;MaskFormatter mascara = new MaskFormatter(&quot;##/##/####&quot;); &#xa;mascara.setPlaceholderCharacter(&apos;_&apos;);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtdatanascimento">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
     </Component>
   </SubComponents>

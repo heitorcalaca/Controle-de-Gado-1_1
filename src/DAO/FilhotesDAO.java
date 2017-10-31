@@ -102,8 +102,7 @@ public class FilhotesDAO {
             PreparedStatement stmt = conecta.prepareStatement(cmdSql);
             stmt.setString(1, idMatriz);
             ResultSet rs = stmt.executeQuery();
-
-           
+ 
             while (rs.next()) {
                 Filhotes f = new Filhotes();
                 f.setDatanascimento(rs.getDate("datanascimento"));
@@ -119,7 +118,7 @@ public class FilhotesDAO {
             throw new RuntimeException(e);
         }
     }
-
+    
     public List<Filhotes> pesquisaDesmama() {
         try {
             List<Filhotes> lista = new ArrayList();

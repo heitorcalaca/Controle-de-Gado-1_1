@@ -45,7 +45,6 @@ public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtnomemae = new javax.swing.JTextField();
-        txtdatanascimento = new javax.swing.JFormattedTextField();
         txtnumero = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtproprietario = new javax.swing.JTextField();
@@ -59,6 +58,7 @@ public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtdatadesmama = new javax.swing.JFormattedTextField();
+        txtdatanascimento = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -88,14 +88,6 @@ public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
         jLabel3.setText("Características");
 
         jLabel4.setText("Data de Nascimento");
-
-        try {
-            MaskFormatter mascara = new MaskFormatter("##/##/####");
-            mascara.setPlaceholderCharacter('_');
-            txtdatanascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(mascara));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
 
         jLabel5.setText("Proprietário");
 
@@ -165,10 +157,10 @@ public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtdatanascimento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
                             .addComponent(txtnumero, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbsituação, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtdatadesmama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))))
+                            .addComponent(txtdatadesmama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                            .addComponent(txtdatanascimento, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
@@ -176,23 +168,22 @@ public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtnumero, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtnumero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
                         .addComponent(txtnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtdatanascimento, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel4)
-                        .addComponent(cmbcaracteristicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(cmbcaracteristicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtdatanascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtdatadesmama, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtdatadesmama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                             .addComponent(jLabel9))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -322,7 +313,7 @@ public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JFormattedTextField txtdatadesmama;
-    public static javax.swing.JFormattedTextField txtdatanascimento;
+    public static javax.swing.JTextField txtdatanascimento;
     public static javax.swing.JTextField txtnome;
     public static javax.swing.JTextField txtnomemae;
     public static javax.swing.JTextField txtnomepai;
