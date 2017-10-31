@@ -20,19 +20,19 @@ public class Filhotes {
     private String nomepaimae;
     private String nomemaemae;
     private String situacaomae;
-    private Integer numerofilhote;
+    private String numerofilhote;
     private String sexo;
 
     
     
-    public Integer getNumerofilhote() {
+    public String getNumerofilhote() {
         return numerofilhote;
     }
 
-    public void setNumerofilhote(Integer numerofilhote) {
+    public void setNumerofilhote(String numerofilhote) {
         this.numerofilhote = numerofilhote;
     }
-    
+
     public Integer getIdfilhote() {
         return idfilhote;
     }

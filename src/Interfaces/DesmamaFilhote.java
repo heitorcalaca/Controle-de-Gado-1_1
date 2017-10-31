@@ -33,6 +33,7 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
      */
     public DesmamaFilhote() {
         initComponents();
+
     }
 
     /**
@@ -328,37 +329,12 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
         }
 
         try {
+
             String nome = txtnome.getText();
             MatrizesDAO dao = new MatrizesDAO();
 
             List<Matrizes> lista = dao.nomeMae(nome);
 
-            for (Matrizes mae : lista) {
-
-                txtnumero.setText(mae.getNumero());
-                txtcaracteristica.setText(mae.getCaracteristicas());
-                txtdatanascimento.setText(mae.getDatanascimento());
-                txtproprietario.setText(mae.getProprietario());
-                txtsituacao.setText(mae.getSituacao());
-                txtnomepai.setText(mae.getNomepai());
-                txtnomemae.setText(mae.getNomemae());
-                txtcodigo.setText(Integer.toString(mae.getIdmatriz()));
-            }
-            
-            List<Filhotes> listaFilhotes = daof.pesquisaMae(Integer.parseInt(txtcodigo.getText()));
-            DefaultTableModel modelo = (DefaultTableModel) tabelaFilhotes.getModel();
-            modelo.setNumRows(0);
-            for (Filhotes f : listaFilhotes) {
-                modelo.addRow(new Object[]{
-                    formato.format(f.getDatanascimento()),
-                    f.getSexo(),
-                    f.getNomepai(),
-                    formato.format(f.getDatadesmama()),
-                    f.getNumerofilhote(),
-                    f.getSituacao(),
-                    f.getObservacao()
-                });
-            }
             if (lista.isEmpty()) {
                 JOptionPane.showMessageDialog(this.rootPane, "Matriz não cadastrada");
                 txtnome.grabFocus();
@@ -372,8 +348,48 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
                 }
             }
 
-        } catch (Exception e) {
+            for (Matrizes mae : lista) {
 
+                txtnumero.setText(mae.getNumero());
+                txtcaracteristica.setText(mae.getCaracteristicas());
+                txtdatanascimento.setText(mae.getDatanascimento());
+                txtproprietario.setText(mae.getProprietario());
+                txtsituacao.setText(mae.getSituacao());
+                txtnomepai.setText(mae.getNomepai());
+                txtnomemae.setText(mae.getNomemae());
+                txtcodigo.setText(Integer.toString(mae.getIdmatriz()));
+            }
+
+            List<Filhotes> listaFilhotes = daof.pesquisaMae(Integer.parseInt(txtcodigo.getText()));
+            DefaultTableModel modelo = (DefaultTableModel) tabelaFilhotes.getModel();
+            modelo.setNumRows(0);
+            for (Filhotes f : listaFilhotes) {
+                if (f.getSituacao().equals("NO")) {
+                    modelo.addRow(new Object[]{
+                        formato.format(f.getDatanascimento()),
+                        f.getSexo(),
+                        f.getNomepai(),
+                        formato.format(f.getDatadesmama()),
+                        f.getNumerofilhote(),
+                        f.getSituacao(),
+                        f.getObservacao()
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(this.rootPane, "Não existe filhote em fase de desmama!");
+                    txtnome.grabFocus();
+                    //limpar tela
+                    for (int i = 0; i < getContentPane().getComponentCount(); i++) {
+                        Component c = getContentPane().getComponent(i);
+                        if (c instanceof JTextField) {
+                            JTextField field = (JTextField) c;
+                            field.setText("");
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }//GEN-LAST:event_txtnomeActionPerformed
 
@@ -381,7 +397,6 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             FilhotesDAO daof = new FilhotesDAO();
-
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             NovaMatrizDesmamada obj = new NovaMatrizDesmamada();
             Principal.getPainel().add(obj);
@@ -407,6 +422,20 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnDesmamaActionPerformed
 
+    public int idFilhote() {
+        try {
+            FilhotesDAO daof = new FilhotesDAO();
+
+            String idMatriz = NovaMatrizDesmamada.txtnomemae.getText();
+
+            int idFilhote = daof.pesquisaFilhoteM(idMatriz).get(0).getIdfilhote();
+
+            return idFilhote;
+        } catch (Exception erro) {
+            throw new RuntimeException(erro);
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDesmama;
