@@ -34,7 +34,7 @@ public class NovoFilhote extends javax.swing.JInternalFrame {
 
     private final Connection conecta;
 
-    SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
     /**
      * Creates new form NovoFilhote
@@ -515,6 +515,7 @@ public class NovoFilhote extends javax.swing.JInternalFrame {
                 field.setText("");
             }
         }
+        txtnome.grabFocus();
     }//GEN-LAST:event_botaosalvarActionPerformed
 
     private void txtdatanascimentofilhoteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtdatanascimentofilhoteFocusLost

@@ -11,8 +11,7 @@ public class ConnectionFactory {
     public ConnectionFactory() {
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-            conecta = DriverManager.getConnection("jdbc:derby:C:\\Users\\aluno\\Desktop\\controledegado", "root", "root");
-            System.out.println("Conectado");
+            conecta = DriverManager.getConnection("jdbc:derby:C:\\Users\\heito\\Desktop\\Pasta nova\\controledegado", "root", "root");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }

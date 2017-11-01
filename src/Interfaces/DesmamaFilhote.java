@@ -17,6 +17,7 @@ import java.awt.Dimension;
 import Utilitários.Listar;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -33,6 +34,7 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
      */
     public DesmamaFilhote() {
         initComponents();
+
     }
 
     /**
@@ -320,6 +322,7 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
 
     private void txtnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnomeActionPerformed
         // TODO add your handling code here:
+        int aux = 0;
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         FilhotesDAO daof = new FilhotesDAO();
         if (txtnome.getText().isEmpty()) {
@@ -328,37 +331,12 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
         }
 
         try {
+
             String nome = txtnome.getText();
             MatrizesDAO dao = new MatrizesDAO();
 
             List<Matrizes> lista = dao.nomeMae(nome);
 
-            for (Matrizes mae : lista) {
-
-                txtnumero.setText(mae.getNumero());
-                txtcaracteristica.setText(mae.getCaracteristicas());
-                txtdatanascimento.setText(mae.getDatanascimento());
-                txtproprietario.setText(mae.getProprietario());
-                txtsituacao.setText(mae.getSituacao());
-                txtnomepai.setText(mae.getNomepai());
-                txtnomemae.setText(mae.getNomemae());
-                txtcodigo.setText(Integer.toString(mae.getIdmatriz()));
-            }
-            
-            List<Filhotes> listaFilhotes = daof.pesquisaMae(Integer.parseInt(txtcodigo.getText()));
-            DefaultTableModel modelo = (DefaultTableModel) tabelaFilhotes.getModel();
-            modelo.setNumRows(0);
-            for (Filhotes f : listaFilhotes) {
-                modelo.addRow(new Object[]{
-                    formato.format(f.getDatanascimento()),
-                    f.getSexo(),
-                    f.getNomepai(),
-                    formato.format(f.getDatadesmama()),
-                    f.getNumerofilhote(),
-                    f.getSituacao(),
-                    f.getObservacao()
-                });
-            }
             if (lista.isEmpty()) {
                 JOptionPane.showMessageDialog(this.rootPane, "Matriz não cadastrada");
                 txtnome.grabFocus();
@@ -372,8 +350,61 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
                 }
             }
 
-        } catch (Exception e) {
+            for (Matrizes mae : lista) {
 
+                txtnumero.setText(mae.getNumero());
+                txtcaracteristica.setText(mae.getCaracteristicas());
+                txtdatanascimento.setText(mae.getDatanascimento());
+                txtproprietario.setText(mae.getProprietario());
+                txtsituacao.setText(mae.getSituacao());
+                txtnomepai.setText(mae.getNomepai());
+                txtnomemae.setText(mae.getNomemae());
+                txtcodigo.setText(Integer.toString(mae.getIdmatriz()));
+            }
+
+            List<Filhotes> listaFilhotes = daof.pesquisaMae(Integer.parseInt(txtcodigo.getText()));
+            DefaultTableModel modelo = (DefaultTableModel) tabelaFilhotes.getModel();
+            modelo.setNumRows(0);
+
+            for (int i = 0; i < listaFilhotes.size(); i++) {
+                String situacao = listaFilhotes.get(i).getSituacao();
+                if (situacao.contains("NO")) {
+                    aux++;
+                }
+            }
+
+            if (aux == 0) {
+                JOptionPane.showMessageDialog(this.rootPane, "Não existe filhote em fase de desmama!");
+                txtnome.grabFocus();
+                //limpar tela
+                for (int i = 0; i < getContentPane().getComponentCount(); i++) {
+                    Component c = getContentPane().getComponent(i);
+                    if (c instanceof JTextField) {
+                        JTextField field = (JTextField) c;
+                        field.setText("");
+                    }
+
+                }
+
+            } else {
+                for (Filhotes f : listaFilhotes) {
+                    if (f.getSituacao().equals("NO")) {
+                        modelo.addRow(new Object[]{
+                            formato.format(f.getDatanascimento()),
+                            f.getSexo(),
+                            f.getNomepai(),
+                            formato.format(f.getDatadesmama()),
+                            f.getNumerofilhote(),
+                            f.getSituacao(),
+                            f.getObservacao()
+                        });
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }//GEN-LAST:event_txtnomeActionPerformed
 
@@ -381,31 +412,79 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             FilhotesDAO daof = new FilhotesDAO();
-
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-            NovaMatrizDesmamada obj = new NovaMatrizDesmamada();
-            Principal.getPainel().add(obj);
-            obj.setVisible(true);
-            obj.setPosicao();
 
             Filhotes f = new Filhotes();
+
             String idMatriz = txtcodigo.getText();
 
-            f.setDatanascimento(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getDatanascimento());
-            f.setProprietario(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getProprietario());
-            f.setNomepai(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getNomepai());
-            f.setCaracteristicas(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getCaracteristicas());
+            if (tabelaFilhotes.getValueAt(tabelaFilhotes.getSelectedRow(), 1).equals("F")) {
 
-            NovaMatrizDesmamada.txtdatanascimento.setText(formato.format(f.getDatanascimento()));
-            NovaMatrizDesmamada.txtproprietario.setText(f.getProprietario());
-            NovaMatrizDesmamada.cmbcaracteristicas.setSelectedItem(f.getCaracteristicas());
-            NovaMatrizDesmamada.txtnomepai.setText(f.getNomepai());
-            NovaMatrizDesmamada.txtnomemae.setText(txtnome.getText());
+                NovaMatrizDesmamada obj = new NovaMatrizDesmamada();
+                Principal.getPainel().add(obj);
+                obj.setVisible(true);
+                obj.setPosicao();
+
+                f.setDatanascimento(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getDatanascimento());
+                f.setProprietario(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getProprietario());
+                f.setNomepai(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getNomepai());
+                f.setCaracteristicas(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getCaracteristicas());
+
+                NovaMatrizDesmamada.txtdatanascimento.setText(formato.format(f.getDatanascimento()));
+                NovaMatrizDesmamada.txtproprietario.setText(f.getProprietario());
+                NovaMatrizDesmamada.cmbcaracteristicas.setSelectedItem(f.getCaracteristicas());
+                NovaMatrizDesmamada.txtnomepai.setText(f.getNomepai());
+                NovaMatrizDesmamada.txtnomemae.setText(txtnome.getText());
+            } else {
+
+                NovoMachoDesmamado obj = new NovoMachoDesmamado();
+                Principal.getPainel().add(obj);
+                obj.setVisible(true);
+                obj.setPosicao();
+
+                f.setDatanascimento(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getDatanascimento());
+                f.setProprietario(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getProprietario());
+                f.setNomepai(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getNomepai());
+                f.setCaracteristicas(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getCaracteristicas());
+
+                NovoMachoDesmamado.txtdatanascimento.setText(formato.format(f.getDatanascimento()));
+                NovoMachoDesmamado.txtproprietario.setText(f.getProprietario());
+                NovoMachoDesmamado.cmbcaracteristicas.setSelectedItem(f.getCaracteristicas());
+                NovoMachoDesmamado.txtnomepai.setText(f.getNomepai());
+                NovoMachoDesmamado.txtnomemae.setText(txtnome.getText());
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
     }//GEN-LAST:event_btnDesmamaActionPerformed
+
+    public int idFilhoteF() {
+        try {
+            FilhotesDAO daof = new FilhotesDAO();
+
+            String nomeMatriz = NovaMatrizDesmamada.txtnomemae.getText();
+            int idFilhote = daof.pesquisaFilhoteM(nomeMatriz).get(0).getIdfilhote();
+
+            return idFilhote;
+        } catch (Exception erro) {
+            throw new RuntimeException(erro);
+        }
+
+    }
+
+    public int idFilhoteM() {
+        try {
+            FilhotesDAO daof = new FilhotesDAO();
+
+            String nomeMatriz = NovoMachoDesmamado.txtnomemae.getText();
+            int idFilhote = daof.pesquisaFilhoteM(nomeMatriz).get(0).getIdfilhote();
+
+            return idFilhote;
+        } catch (Exception erro) {
+            throw new RuntimeException(erro);
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

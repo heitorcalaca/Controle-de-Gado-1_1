@@ -1,22 +1,25 @@
 package Interfaces;
+
 import DAO.FilhotesDAO;
 import DAO.MatrizesDAO;
 import static Interfaces.ConsultaMatriz.tabelaFilhotes;
 import static Interfaces.ConsultaMatriz.txtcodigo;
+import static Interfaces.EditarMatriz.cmbcaracteristicas;
 import JavaBeans.Filhotes;
 import JavaBeans.Matrizes;
 import Utilitários.Listar;
 import java.awt.Dimension;
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 public class ListaMatrizes extends javax.swing.JInternalFrame {
+
     public ListaMatrizes() {
         initComponents();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -181,28 +184,33 @@ public class ListaMatrizes extends javax.swing.JInternalFrame {
         lis.ListarNomes();
     }//GEN-LAST:event_formInternalFrameActivated
     private void botaoeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoeditarActionPerformed
-        if (tabelaMatrizes.getSelectedRow() != -1) {
-            EditarMatriz obj = new EditarMatriz();
-            Principal.getPainel().add(obj);
-            MatrizesDAO dao = new MatrizesDAO();
-            obj.setVisible(true);
-            obj.setPosicao();
-
-            Matrizes matrizes = new Matrizes();
-
-            matrizes.setNome((String) tabelaMatrizes.getValueAt(tabelaMatrizes.getSelectedRow(), 1));
-
-            EditarMatriz.txtcodigo.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getIdmatriz().toString());
-            EditarMatriz.txtnome.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getNome());
-            EditarMatriz.txtnumero.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getNumero());
-            EditarMatriz.cmbcaracteristicas.setSelectedItem(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getCaracteristicas());
-            EditarMatriz.txtdatanascimento.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getDatanascimento());
-            EditarMatriz.txtproprietario.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getProprietario());
-            EditarMatriz.txtnomepai.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getNomepai());
-            EditarMatriz.txtnomemae.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getNomemae());
-            EditarMatriz.cmbsituacao.setSelectedItem(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getSituacao());
+        try {
+            if (tabelaMatrizes.getSelectedRow() != -1) {
+                EditarMatriz obj = new EditarMatriz();
+                Principal.getPainel().add(obj);
+                MatrizesDAO dao = new MatrizesDAO();
+                obj.setVisible(true);
+                obj.setPosicao();
+                
+                Matrizes matrizes = new Matrizes();
+     
+                matrizes.setNome((String) tabelaMatrizes.getValueAt(tabelaMatrizes.getSelectedRow(), 1));
+                
+                EditarMatriz.txtcodigo.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getIdmatriz().toString());
+                EditarMatriz.txtnome.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getNome());
+                EditarMatriz.txtnumero.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getNumero());
+                cmbcaracteristicas.setEditable(true);
+                cmbcaracteristicas.setSelectedItem(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getCaracteristicas());
+                cmbcaracteristicas.setEditable(false);                
+                EditarMatriz.txtdatanascimento.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getDatanascimento());
+                EditarMatriz.txtproprietario.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getProprietario());
+                EditarMatriz.txtnomepai.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getNomepai());
+                EditarMatriz.txtnomemae.setText(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getNomemae());
+                EditarMatriz.cmbsituacao.setSelectedItem(dao.ListarMatrizesPorNome(matrizes.getNome()).get(0).getSituacao());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-
 
     }//GEN-LAST:event_botaoeditarActionPerformed
     private void botaoexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoexcluirActionPerformed
@@ -242,26 +250,26 @@ public class ListaMatrizes extends javax.swing.JInternalFrame {
 
                 MatrizesDAO dao = new MatrizesDAO();
 
-                    List<Matrizes> listadematrizes1 = dao.ListarMatrizesPorNome(nome);
-                    List<Matrizes> listadematrizes2 = dao.ListarMatrizesPorNumero(numero);
+                List<Matrizes> listadematrizes1 = dao.ListarMatrizesPorNome(nome);
+                List<Matrizes> listadematrizes2 = dao.ListarMatrizesPorNumero(numero);
 
-                    //2 passo - colocar os dados na tabela JTABLE
-                    DefaultTableModel modelo = (DefaultTableModel) tabelaMatrizes.getModel();
-                    modelo.setNumRows(0);
-                    for (Matrizes m : listadematrizes1) {
-                        modelo.addRow(new Object[]{
-                            // m.getIdmatriz(),
-                            m.getNumero(),
-                            m.getNome(),
-                            //m.getCaracteristicas(),
-                            // m.getDatanascimento(),
-                            m.getProprietario(),
-                            // m.getNomepai(),
-                            // m.getNomemae(),
-                            m.getSituacao()
-                        });
-                    }
-               
+                //2 passo - colocar os dados na tabela JTABLE
+                DefaultTableModel modelo = (DefaultTableModel) tabelaMatrizes.getModel();
+                modelo.setNumRows(0);
+                for (Matrizes m : listadematrizes1) {
+                    modelo.addRow(new Object[]{
+                        // m.getIdmatriz(),
+                        m.getNumero(),
+                        m.getNome(),
+                        //m.getCaracteristicas(),
+                        // m.getDatanascimento(),
+                        m.getProprietario(),
+                        // m.getNomepai(),
+                        // m.getNomemae(),
+                        m.getSituacao()
+                    });
+                }
+
                 for (Matrizes m : listadematrizes2) {
                     modelo.addRow(new Object[]{
                         // m.getIdmatriz(),
@@ -275,8 +283,6 @@ public class ListaMatrizes extends javax.swing.JInternalFrame {
                         m.getSituacao()
                     });
                 }
-                
-                
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);

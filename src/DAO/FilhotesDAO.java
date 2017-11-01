@@ -61,6 +61,29 @@ public class FilhotesDAO {
 
     }
 
+    public void desmamarFilhote(Filhotes obj) {
+        try {
+            //1 passo - criar o comando sql
+            String cmdsql = "UPDATE filhotes SET situacao=?, datadesmama=?, numerofilhote=? WHERE idfilhote=?";
+            //2 passp - organizar comdsql e executa-lo
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+            
+            stmt.setString(1, obj.getSituacao());
+            stmt.setDate(2, obj.getDatadesmama());
+            stmt.setString(3, obj.getNumerofilhote());
+            stmt.setInt(4, obj.getIdfilhote());
+            //3 passo - Executar o comando
+            stmt.execute();
+
+            //4 passo - Fexar a conexão
+            stmt.close();
+
+        } catch (SQLException erro) {
+            throw new RuntimeException(erro);
+
+        }
+    }
+
     public List<Filhotes> pesquisaMae(Integer idmatriz) {
         try {
             List<Filhotes> lista = new ArrayList();
@@ -79,7 +102,7 @@ public class FilhotesDAO {
                 f.setSexo(rs.getString("sexo"));
                 f.setNomepai(rs.getString("nomepai"));
                 f.setDatadesmama(rs.getDate("datadesmama"));
-                f.setNumerofilhote(rs.getInt("numerofilhote"));
+                f.setNumerofilhote(rs.getString("numerofilhote"));
                 f.setSituacao(rs.getString("situacao"));
                 f.setObservacao(rs.getString("observacao"));
                 lista.add(f);
@@ -94,6 +117,8 @@ public class FilhotesDAO {
 
     }
 
+    
+
     public List<Filhotes> pesquisaFilhote(String idMatriz) {
         try {
             List<Filhotes> lista = new ArrayList();
@@ -102,13 +127,15 @@ public class FilhotesDAO {
             PreparedStatement stmt = conecta.prepareStatement(cmdSql);
             stmt.setString(1, idMatriz);
             ResultSet rs = stmt.executeQuery();
- 
+
             while (rs.next()) {
                 Filhotes f = new Filhotes();
+                f.setIdfilhote(rs.getInt("idfilhote"));
                 f.setDatanascimento(rs.getDate("datanascimento"));
                 f.setProprietario(rs.getString("proprietario"));
                 f.setNomepai(rs.getString("nomepai"));
                 f.setCaracteristicas(rs.getString("caracteristicas"));
+                f.setSexo(rs.getString("sexo"));
                 lista.add(f);
             }
             rs.close();
@@ -118,7 +145,63 @@ public class FilhotesDAO {
             throw new RuntimeException(e);
         }
     }
-    
+
+     public List<Filhotes> pesquisaFilhote(int idFilhote) {
+        try {
+            List<Filhotes> lista = new ArrayList();
+
+            String cmdSql = "SELECT * FROM filhotes WHERE idfilhote=?";
+            PreparedStatement stmt = conecta.prepareStatement(cmdSql);
+            stmt.setInt(1, idFilhote);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Filhotes f = new Filhotes();
+                f.setIdfilhote(rs.getInt("idfilhote"));
+                f.setDatanascimento(rs.getDate("datanascimento"));
+                f.setProprietario(rs.getString("proprietario"));
+                f.setNomepai(rs.getString("nomepai"));
+                f.setCaracteristicas(rs.getString("caracteristicas"));
+                f.setSexo(rs.getString("sexo"));
+                lista.add(f);
+            }
+            rs.close();
+            stmt.close();
+            return lista;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+     
+    public List<Filhotes> pesquisaFilhoteM(String nomeMae) {
+        try {
+            List<Filhotes> lista = new ArrayList();
+
+            String cmdSql = "SELECT * FROM filhotes WHERE nome=?";
+            PreparedStatement stmt = conecta.prepareStatement(cmdSql);
+            stmt.setString(1, nomeMae);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("situacao").equals("NO")) {
+                    Filhotes f = new Filhotes();
+                    f.setIdfilhote(rs.getInt("idfilhote"));
+                    f.setDatanascimento(rs.getDate("datanascimento"));
+                    f.setProprietario(rs.getString("proprietario"));
+                    f.setNomepai(rs.getString("nomepai"));
+                    f.setCaracteristicas(rs.getString("caracteristicas"));
+                    lista.add(f);
+                }
+            }
+            rs.close();
+            stmt.close();
+            return lista;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public List<Filhotes> pesquisaDesmama() {
         try {
             List<Filhotes> lista = new ArrayList();

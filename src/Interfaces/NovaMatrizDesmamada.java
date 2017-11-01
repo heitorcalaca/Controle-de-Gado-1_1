@@ -6,12 +6,16 @@
 package Interfaces;
 
 import DAO.CaracteristicasDAO;
+import DAO.FilhotesDAO;
 import DAO.MatrizesDAO;
 import JavaBeans.Caracteristicas;
+import JavaBeans.Filhotes;
 import JavaBeans.Matrizes;
 import Utilitários.Listar;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -23,6 +27,7 @@ import javax.swing.text.MaskFormatter;
  */
 public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
 
+    SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
     /**
      * Creates new form NovaMatriz
      */
@@ -218,7 +223,10 @@ public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
     }
 
     private void botaosalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaosalvarActionPerformed
+        DesmamaFilhote d = new DesmamaFilhote();
         MatrizesDAO dao = new MatrizesDAO();
+        FilhotesDAO daof = new FilhotesDAO();
+        Filhotes f = new Filhotes();
         String nome = txtnome.getText();
         String numero = txtnumero.getText();
         if (txtnome.getText().isEmpty()) {
@@ -241,7 +249,7 @@ public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
         } else if (txtproprietario.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this.rootPane, "O campo Proprietário é obrigatório");
             txtproprietario.grabFocus();
-        }else {
+        } else {
             try {
                 //botão salvar
 
@@ -255,10 +263,20 @@ public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
                 obj.setNomepai(txtnomepai.getText());
                 obj.setNomemae(txtnomemae.getText());
                 obj.setSituacao((String) cmbsituação.getSelectedItem());
+                
+                
+                Date dataD = formatoData.parse(txtdatadesmama.getText());
+                java.sql.Date dataDSql = new java.sql.Date(dataD.getTime());
+                f.setDatadesmama(dataDSql);
+                f.setSituacao("DE");
+                f.setNumerofilhote(txtnumero.getText());
+                f.setIdfilhote(d.idFilhoteF());
 
+                
                 //2 pass0 - criar objeto do tipo matrizesDAO
                 dao.cadastrarMatriz(obj);
-
+                daof.desmamarFilhote(f);
+                
                 JOptionPane.showMessageDialog(this.rootPane, "Cadastro Realizado com Sucesso!");
             } catch (Exception erro) {
                 System.out.println(erro);
@@ -297,6 +315,9 @@ public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_formInternalFrameOpened
 
+    public void idFihlote(){
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaosair;

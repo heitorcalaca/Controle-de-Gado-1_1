@@ -1,0 +1,33 @@
+Tue Oct 31 22:44:53 BRST 2017 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+----------------------------------------------------------------
+Tue Oct 31 22:44:53 BRST 2017:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-015f-7509-bbcd-000003050b96
+no diretório de banco de dados D:\Documentos\NetBeansProjects\Controle de Gado 1_1\controledegado\controledegado 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_101-b13
+user.dir=C:\Program Files\glassfish-4.1.1\javadb
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=D:\Documentos\NetBeansProjects\Controle de Gado 1_1\controledegado
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Oct 31 22:44:57 BRST 2017:
+Encerrando a instância a816c00e-015f-7509-bbcd-000003050b96
+Tue Oct 31 22:44:57 BRST 2017 Thread[DRDAConnThread_3,5,main] (DATABASE = controledegado), (DRDAID = {2}), Banco de dados 'controledegado' fechado.
+----------------------------------------------------------------
+Tue Oct 31 22:44:59 BRST 2017:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância 560740aa-015f-7509-bbcd-000003050b96
+no diretório de banco de dados D:\Documentos\NetBeansProjects\Controle de Gado 1_1\controledegado\controledegado 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_101-b13
+user.dir=C:\Program Files\glassfish-4.1.1\javadb
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=D:\Documentos\NetBeansProjects\Controle de Gado 1_1\controledegado
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Oct 31 22:46:40 BRST 2017: Shutting down Derby engine

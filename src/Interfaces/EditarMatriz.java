@@ -264,10 +264,9 @@ public class EditarMatriz extends javax.swing.JInternalFrame {
             List<Caracteristicas> lista = dao.ListarCaracteristicas();
             for (Caracteristicas c : lista) {
                 cmbcaracteristicas.addItem(c);
-                cmbcaracteristicas.setSelectedItem(c.equals(daom.ListarMatrizesPorNome(txtnome.getText()).get(0).getCaracteristicas()));
             }
         } catch (Exception e) {
-            System.out.println(e);
+            throw new RuntimeException(e);
         }
     }//GEN-LAST:event_formInternalFrameOpened
 

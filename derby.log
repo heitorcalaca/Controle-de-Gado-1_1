@@ -1,13 +1,18 @@
 ----------------------------------------------------------------
-Mon Oct 30 21:03:46 BRST 2017:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instância a816c00e-015f-6f86-cdbd-000006e5bb40
-no diretório de banco de dados C:\Users\aluno\Desktop\controledegado 
+<<<<<<< HEAD
+Wed Nov 01 17:04:32 BRST 2017:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instância a816c00e-015f-78f8-8112-000002d80000
+=======
+Tue Oct 31 20:46:00 BRST 2017:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instância a816c00e-015f-749c-e574-000002d84348
+>>>>>>> c42fd336706c25c248432b474daddcb82a769e7b
+no diretório de banco de dados C:\Users\heito\Desktop\Pasta nova\controledegado 
 
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_131-b11
-user.dir=C:\Users\aluno\Desktop\Controle de Gado 1_1
-os.name=Windows 8.1
+java.runtime.version=1.8.0_101-b13
+user.dir=D:\Documentos\NetBeansProjects\Controle de Gado 1_1
+os.name=Windows 10
 os.arch=amd64
-os.version=6.3
+os.version=10.0
 derby.system.home=null
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''
