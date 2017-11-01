@@ -270,8 +270,12 @@ public class NovaMatrizDesmamada extends javax.swing.JInternalFrame {
                 f.setDatadesmama(dataDSql);
                 f.setSituacao("DE");
                 f.setNumerofilhote(txtnumero.getText());
+<<<<<<< HEAD
                 f.setIdfilhote(d.idFilhoteF());
 
+=======
+                f.setIdfilhote(d.idFilhote());
+>>>>>>> c42fd336706c25c248432b474daddcb82a769e7b
                 
                 //2 pass0 - criar objeto do tipo matrizesDAO
                 dao.cadastrarMatriz(obj);

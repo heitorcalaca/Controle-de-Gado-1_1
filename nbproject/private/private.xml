@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/JavaBeans/Matrizes.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/Interfaces/NovoFilhote.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/Interfaces/ListaMatrizes.java</file>
@@ -11,6 +12,12 @@
             <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/DAO/MatrizesDAO.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/Interfaces/NovoMachoDesmamado.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/JDBC/ConnectionFactory.java</file>
+=======
+            <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/Interfaces/NovoFilhote.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/Interfaces/NovaMatrizDesmamada.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/DAO/MatrizesDAO.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/JavaBeans/Filhotes.java</file>
+>>>>>>> c42fd336706c25c248432b474daddcb82a769e7b
 =======
             <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/Interfaces/NovoFilhote.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/src/Interfaces/NovaMatrizDesmamada.java</file>

@@ -365,6 +365,7 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
             List<Filhotes> listaFilhotes = daof.pesquisaMae(Integer.parseInt(txtcodigo.getText()));
             DefaultTableModel modelo = (DefaultTableModel) tabelaFilhotes.getModel();
             modelo.setNumRows(0);
+<<<<<<< HEAD
 
             for (int i = 0; i < listaFilhotes.size(); i++) {
                 String situacao = listaFilhotes.get(i).getSituacao();
@@ -382,6 +383,29 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
                     if (c instanceof JTextField) {
                         JTextField field = (JTextField) c;
                         field.setText("");
+=======
+            for (Filhotes f : listaFilhotes) {
+                if (f.getSituacao().equals("NO")) {
+                    modelo.addRow(new Object[]{
+                        formato.format(f.getDatanascimento()),
+                        f.getSexo(),
+                        f.getNomepai(),
+                        formato.format(f.getDatadesmama()),
+                        f.getNumerofilhote(),
+                        f.getSituacao(),
+                        f.getObservacao()
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(this.rootPane, "Não existe filhote em fase de desmama!");
+                    txtnome.grabFocus();
+                    //limpar tela
+                    for (int i = 0; i < getContentPane().getComponentCount(); i++) {
+                        Component c = getContentPane().getComponent(i);
+                        if (c instanceof JTextField) {
+                            JTextField field = (JTextField) c;
+                            field.setText("");
+                        }
+>>>>>>> c42fd336706c25c248432b474daddcb82a769e7b
                     }
 
                 }
@@ -459,6 +483,7 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnDesmamaActionPerformed
 
+<<<<<<< HEAD
     public int idFilhoteF() {
         try {
             FilhotesDAO daof = new FilhotesDAO();
@@ -479,13 +504,27 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
 
             String nomeMatriz = NovoMachoDesmamado.txtnomemae.getText();
             int idFilhote = daof.pesquisaFilhoteM(nomeMatriz).get(0).getIdfilhote();
+=======
+    public int idFilhote() {
+        try {
+            FilhotesDAO daof = new FilhotesDAO();
+
+            String idMatriz = NovaMatrizDesmamada.txtnomemae.getText();
+
+            int idFilhote = daof.pesquisaFilhoteM(idMatriz).get(0).getIdfilhote();
+>>>>>>> c42fd336706c25c248432b474daddcb82a769e7b
 
             return idFilhote;
         } catch (Exception erro) {
             throw new RuntimeException(erro);
         }
+<<<<<<< HEAD
     }
 
+=======
+
+    }
+>>>>>>> c42fd336706c25c248432b474daddcb82a769e7b
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDesmama;

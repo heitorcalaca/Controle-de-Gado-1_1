@@ -146,6 +146,7 @@ public class FilhotesDAO {
         }
     }
 
+<<<<<<< HEAD
      public List<Filhotes> pesquisaFilhote(int idFilhote) {
         try {
             List<Filhotes> lista = new ArrayList();
@@ -174,6 +175,8 @@ public class FilhotesDAO {
     }
 
      
+=======
+>>>>>>> c42fd336706c25c248432b474daddcb82a769e7b
     public List<Filhotes> pesquisaFilhoteM(String nomeMae) {
         try {
             List<Filhotes> lista = new ArrayList();
