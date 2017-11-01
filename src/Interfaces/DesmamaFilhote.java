@@ -451,6 +451,7 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
                 NovoMachoDesmamado.cmbcaracteristicas.setSelectedItem(f.getCaracteristicas());
                 NovoMachoDesmamado.txtnomepai.setText(f.getNomepai());
                 NovoMachoDesmamado.txtnomemae.setText(txtnome.getText());
+                NovoMachoDesmamado.txtnumeromae.setText(txtnumero.getText());
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -485,7 +486,8 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
         }
 
     }
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDesmama;
     private javax.swing.JButton jButton1;

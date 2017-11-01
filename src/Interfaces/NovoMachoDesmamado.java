@@ -7,10 +7,10 @@ package Interfaces;
 
 import DAO.CaracteristicasDAO;
 import DAO.FilhotesDAO;
-import DAO.MatrizesDAO;
+import DAO.MachosDAO;
 import JavaBeans.Caracteristicas;
 import JavaBeans.Filhotes;
-import JavaBeans.Matrizes;
+import JavaBeans.Machos;
 import Utilitários.Listar;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -67,6 +67,8 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         txtdatadesmama = new javax.swing.JFormattedTextField();
         txtdatanascimento = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtnumeromae = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -131,6 +133,8 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        jLabel10.setText("Numero da Mãe");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,34 +153,41 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel10))
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtnumero, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                .addGap(138, 138, 138)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(txtdatadesmama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                                            .addComponent(txtdatanascimento, javax.swing.GroupLayout.Alignment.LEADING)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtlote, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtnomemae, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtproprietario, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cmbcaracteristicas, 0, 310, Short.MAX_VALUE)
-                                    .addComponent(txtnomepai))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtnumero)
-                                .addGap(186, 186, 186)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(cmbsituação, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtdatadesmama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                    .addComponent(txtdatanascimento, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                    .addComponent(txtnomepai)
+                                    .addComponent(txtnumeromae, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(18, 18, 18)
-                                .addComponent(txtlote, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmbsituação, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(3, 3, 3))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
                 .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
@@ -196,30 +207,30 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(cmbcaracteristicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtdatanascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtdatadesmama, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbsituação, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(64, 64, 64))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtproprietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtnomepai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtnomemae, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtproprietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9))
+                    .addComponent(txtdatadesmama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmbsituação, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(txtnomepai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtnomemae, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtnumeromae, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaosair)
                     .addComponent(botaosalvar))
@@ -236,18 +247,13 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
 
     private void botaosalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaosalvarActionPerformed
         DesmamaFilhote d = new DesmamaFilhote();
-        MatrizesDAO dao = new MatrizesDAO();
+        MachosDAO dao = new MachosDAO();
         FilhotesDAO daof = new FilhotesDAO();
         Filhotes f = new Filhotes();
-        String nome = txtlote.getText();
         String numero = txtnumero.getText();
         if (txtlote.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this.rootPane, "O campo Nome é obrigatório");
+            JOptionPane.showMessageDialog(this.rootPane, "O campo Lote é obrigatório");
             txtlote.grabFocus();
-        } else if (dao.verificarNome(nome) == true) {
-            JOptionPane.showMessageDialog(this.rootPane, "O nome '" + txtlote.getText() + "' já está cadastrado");
-            txtlote.grabFocus();
-            txtlote.setText("");
         } else if (txtnumero.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this.rootPane, "O campo Numero é obrigatório");
             txtnumero.grabFocus();
@@ -266,14 +272,16 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
                 //botão salvar
 
                 //1 passo - guardar os dados da tela no obj matrizes
-                Matrizes obj = new Matrizes();
-                obj.setNumero(txtnumero.getText());
-                obj.setNome(txtlote.getText());
-                obj.setCaracteristicas((String) cmbcaracteristicas.getSelectedItem().toString());
-                obj.setDatanascimento(txtdatanascimento.getText());
+                Machos obj = new Machos();
+                obj.setNumero(Integer.parseInt(txtnumero.getText()));
+                obj.setLote(txtlote.getText());
+                obj.setCaracteristica((String) cmbcaracteristicas.getSelectedItem().toString());
+                Date data = formatoData.parse(txtdatanascimento.getText());
+                java.sql.Date dataSql = new java.sql.Date(data.getTime());
+                obj.setDatanascimento(dataSql);
                 obj.setProprietario(txtproprietario.getText());
-                obj.setNomepai(txtnomepai.getText());
                 obj.setNomemae(txtnomemae.getText());
+                obj.setNumeromae(Integer.parseInt(txtnumeromae.getText()));
                 obj.setSituacao((String) cmbsituação.getSelectedItem());
 
                 Date dataD = formatoData.parse(txtdatadesmama.getText());
@@ -284,7 +292,7 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
                 f.setIdfilhote(d.idFilhoteM());
 
                 //2 pass0 - criar objeto do tipo matrizesDAO
-                dao.cadastrarMatriz(obj);
+                dao.cadastrarMacho(obj);
                 daof.desmamarFilhote(f);
 
                 JOptionPane.showMessageDialog(this.rootPane, "Cadastro Realizado com Sucesso!");
@@ -306,6 +314,7 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
 
         Listar lis = new Listar();
         lis.ListarNomes();
+        this.dispose();
     }//GEN-LAST:event_botaosalvarActionPerformed
     private void botaosairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaosairActionPerformed
         this.dispose();
@@ -313,12 +322,6 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // Listar Caracteristicas
-
-        String t = "Testanda Doida";
-
-        String tr = t.replaceAll("a\\b", "o");
-        System.out.println(tr);
-        
 
         try {
             CaracteristicasDAO dao = new CaracteristicasDAO();
@@ -342,6 +345,7 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
     public static javax.swing.JComboBox cmbcaracteristicas;
     private javax.swing.JComboBox<String> cmbsituação;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -356,6 +360,7 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField txtnomemae;
     public static javax.swing.JTextField txtnomepai;
     public static javax.swing.JTextField txtnumero;
+    public static javax.swing.JTextField txtnumeromae;
     public static javax.swing.JTextField txtproprietario;
     // End of variables declaration//GEN-END:variables
 }
