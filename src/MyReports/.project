@@ -26,4 +26,11 @@
 		<nature>net.sf.jasperreports.nature</nature>
 		<nature>com.jaspersoft.studio.babel.editor.rbeNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Matrizes.jasper</name>
+			<type>1</type>
+			<location>D:/Documentos/NetBeansProjects/Controle de Gado 1_1/src/MyReports/Matrizes.jasper</location>
+		</link>
+	</linkedResources>
 </projectDescription>

@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Nov 04 15:05:09 BRST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-015f-87fe-474e-00000388dba0 
+on database directory C:\Users\heito\Desktop\Pasta nova\controledegado with class loader sun.misc.Launcher$AppClassLoader@7852e922 
+Loaded from file:/D:/Documentos/NetBeansProjects/Controle%20de%20Gado%201_1/dist/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_101-b13
+user.dir=D:\Documentos\NetBeansProjects\Controle de Gado 1_1\dist
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

@@ -136,6 +136,7 @@ public class FilhotesDAO {
                 f.setNomepai(rs.getString("nomepai"));
                 f.setCaracteristicas(rs.getString("caracteristicas"));
                 f.setSexo(rs.getString("sexo"));
+                f.setSituacao(rs.getString("situacao"));
                 lista.add(f);
             }
             rs.close();

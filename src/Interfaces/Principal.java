@@ -22,6 +22,11 @@ import java.util.Locale;
 //import net.sf.jasperreports.engine.JasperPrint;
 //import net.sf.jasperreports.view.JasperViewer;
 import Utilitários.VerificaDesmama;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 // Para fazer o calculo da data de desmama utilize a classe Calendar cal = GregorianCalendar.getInstance();!!!!!
 public class Principal extends javax.swing.JFrame {
@@ -62,6 +67,7 @@ public class Principal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         relMatrizes = new javax.swing.JMenuItem();
         relCaracterísticas = new javax.swing.JMenuItem();
+        relDesmama = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -174,6 +180,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(relCaracterísticas);
 
+        relDesmama.setText("Desmama");
+        relDesmama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                relDesmamaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(relDesmama);
+
         menu_menu.add(jMenu2);
 
         jMenuBar1.add(menu_menu);
@@ -232,33 +246,33 @@ public class Principal extends javax.swing.JFrame {
 
     private void relMatrizesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relMatrizesActionPerformed
 
-//        try {
-//            String cmdsql = "select * from matrizes";
-//            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
-//            ResultSet rs = stmt.executeQuery();
-//            JRResultSetDataSource relat = new JRResultSetDataSource(rs);
-//            JasperPrint jp = JasperFillManager.fillReport("\\Documentos\\NetBeansProjects\\Controle de Gado 1_1\\src\\MyReports\\Matrizes.jasper", new HashMap(), relat);
-//            JasperViewer jv = new JasperViewer(jp, false);
-//            jv.setVisible(true);
-//
-//        } catch (SQLException | JRException ex) {
-//            JOptionPane.showMessageDialog(this.rootPane, ex);
-//        }
+        try {
+            String cmdsql = "select * from matrizes";
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+            ResultSet rs = stmt.executeQuery();
+            JRResultSetDataSource relat = new JRResultSetDataSource(rs);
+            JasperPrint jp = JasperFillManager.fillReport(".\\rel\\Relatorio_Matrizes.jasper", new HashMap(), relat);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+
+        } catch (SQLException | JRException ex) {
+            JOptionPane.showMessageDialog(this.rootPane, ex);
+        }
     }//GEN-LAST:event_relMatrizesActionPerformed
 
     private void relCaracterísticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relCaracterísticasActionPerformed
-//        try {
-//            String cmdsql = "Select * from caracteristicas";
-//            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
-//            ResultSet rs = stmt.executeQuery();
-//            JRResultSetDataSource relat = new JRResultSetDataSource(rs);
-//            JasperPrint jp = JasperFillManager.fillReport("\\Documentos\\NetBeansProjects\\Controle de Gado 1_1\\src\\MyReports\\Caracteristicas.jasper", new HashMap(), relat);
-//            JasperViewer jv = new JasperViewer(jp, false);
-//            jv.setVisible(true);
-//
-//        } catch (SQLException | JRException ex) {
-//            JOptionPane.showMessageDialog(this.rootPane, ex);
-//        }
+        try {
+            String cmdsql = "Select * from caracteristicas";
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+            ResultSet rs = stmt.executeQuery();
+            JRResultSetDataSource relat = new JRResultSetDataSource(rs);
+            JasperPrint jp = JasperFillManager.fillReport(".\\rel\\Caracteristicas.jasper", new HashMap(), relat);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+
+        } catch (SQLException | JRException ex) {
+            JOptionPane.showMessageDialog(this.rootPane, ex);
+        }
 
     }//GEN-LAST:event_relCaracterísticasActionPerformed
 
@@ -276,6 +290,22 @@ public class Principal extends javax.swing.JFrame {
         df.setPosicao();
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void relDesmamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relDesmamaActionPerformed
+        // TODO add your handling code here:
+         try {
+            String cmdsql = "SELECT * FROM filhotes WHERE datadesmama <= CURRENT_DATE";
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+            ResultSet rs = stmt.executeQuery();            
+            JRResultSetDataSource relat = new JRResultSetDataSource(rs);
+            JasperPrint jp = JasperFillManager.fillReport(".\\rel\\Relatorio_Desmama.jasper", new HashMap(), relat);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+
+        } catch (SQLException | JRException ex) {
+            JOptionPane.showMessageDialog(this.rootPane, ex);
+        }
+    }//GEN-LAST:event_relDesmamaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,6 +365,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuitem_novacaracteristica;
     private javax.swing.JMenuItem menuitem_novofilhote;
     private javax.swing.JMenuItem relCaracterísticas;
+    private javax.swing.JMenuItem relDesmama;
     private javax.swing.JMenuItem relMatrizes;
     // End of variables declaration//GEN-END:variables
 }

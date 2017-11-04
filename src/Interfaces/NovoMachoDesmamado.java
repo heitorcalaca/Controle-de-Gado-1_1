@@ -133,6 +133,12 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        txtdatanascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdatanascimentoActionPerformed(evt);
+            }
+        });
+
         jLabel10.setText("Numero da Mãe");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -334,6 +340,10 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_formInternalFrameOpened
+
+    private void txtdatanascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdatanascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdatanascimentoActionPerformed
 
     public void idFihlote() {
 
