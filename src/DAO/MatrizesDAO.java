@@ -363,12 +363,6 @@ public class MatrizesDAO {
         }
     }
     
-//    public List<Matrizes> numerosLivres () throws SQLException{
-//        String cmdSql = "SELECT numero FROM matrizes";
-//        PreparedStatement stmt = conecta.prepareStatement(cmdSql);
-//        
-//        ResultSet rs = stmt.executeQuery();
-//        
-//        
-//    }
+    
+    
 }

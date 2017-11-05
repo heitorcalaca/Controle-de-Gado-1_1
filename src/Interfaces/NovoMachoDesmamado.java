@@ -268,7 +268,7 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
             txtnumero.grabFocus();
         } else if (dao.verificarNumero(numero) == true) {
             JOptionPane.showMessageDialog(this.rootPane, "O numero '" + txtnumero.getText() + "' já está cadastrado");
-            txtnumero.grabFocus();
+            DesmamaFilhote.txtnumero.grabFocus();
             txtnumero.setText("");
         } else if (txtproprietario.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this.rootPane, "O campo Proprietário é obrigatório");
