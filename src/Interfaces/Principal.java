@@ -56,6 +56,8 @@ public class Principal extends javax.swing.JFrame {
         relMatrizes = new javax.swing.JMenuItem();
         relCaracterísticas = new javax.swing.JMenuItem();
         relDesmama = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        menuItem_NovoMacho = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -178,6 +180,18 @@ public class Principal extends javax.swing.JFrame {
 
         menu_menu.add(jMenu2);
 
+        jMenu3.setText("Machos");
+
+        menuItem_NovoMacho.setText("Novo Macho");
+        menuItem_NovoMacho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_NovoMachoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItem_NovoMacho);
+
+        menu_menu.add(jMenu3);
+
         jMenuBar1.add(menu_menu);
 
         setJMenuBar(jMenuBar1);
@@ -297,6 +311,14 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this.rootPane, ex);
         }
     }//GEN-LAST:event_relDesmamaActionPerformed
+
+    private void menuItem_NovoMachoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_NovoMachoActionPerformed
+        // TODO add your handling code here:
+        NovoMacho obj = new NovoMacho();
+        jdpPrincipal.add(obj);
+        obj.setVisible(true);
+        obj.setPosicao();
+    }//GEN-LAST:event_menuItem_NovoMachoActionPerformed
     
     /**
      * @param args the command line arguments
@@ -343,10 +365,12 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     public static javax.swing.JDesktopPane jdpPrincipal;
+    private javax.swing.JMenuItem menuItem_NovoMacho;
     private javax.swing.JMenu menu_caracteristicas;
     private javax.swing.JMenu menu_matrizes;
     private javax.swing.JMenu menu_menu;

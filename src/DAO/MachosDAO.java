@@ -57,6 +57,36 @@ public class MachosDAO {
         }
     }
     
+    public void cadastrarMachoNovo(Machos obj) {
+        try {
+            //1 passo - criar o comando sql
+            String cmdsql = "INSERT INTO machos (numero,lote,caracteristica,"
+                    + "datanascimento,proprietario,nomemae,situacao) "
+                    + "VALUES(?,?,?,?,?,?,?)";
+
+            //2 passp - organizar comdsql e executa-lo
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+
+            stmt.setInt(1, obj.getNumero());
+            stmt.setString(2, obj.getLote());
+            stmt.setString(3, obj.getCaracteristica());
+            stmt.setDate(4, obj.getDatanascimento());
+            stmt.setString(5, obj.getProprietario());
+            stmt.setString(6, obj.getNomemae());
+            stmt.setString(7, obj.getSituacao());
+
+            //3 passo - Executar o comando
+            stmt.execute();
+
+            //4 passo - Fexar a conexão
+            stmt.close();
+
+        } catch (SQLException erro) {
+            throw new RuntimeException(erro);
+
+        }
+    }
+    
     public boolean verificarNumero(String numero) {
         boolean resultado = false;
         try {
