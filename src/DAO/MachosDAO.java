@@ -36,13 +36,13 @@ public class MachosDAO {
             //2 passp - organizar comdsql e executa-lo
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
 
-            stmt.setInt(1, obj.getNumero());
+            stmt.setString(1, obj.getNumero());
             stmt.setString(2, obj.getLote());
             stmt.setString(3, obj.getCaracteristica());
             stmt.setDate(4, obj.getDatanascimento());
             stmt.setString(5, obj.getProprietario());
             stmt.setString(6, obj.getNomemae());
-            stmt.setInt(7, obj.getNumeromae());
+            stmt.setString(7, obj.getNumeromae());
             stmt.setString(8, obj.getSituacao());
 
             //3 passo - Executar o comando
@@ -67,7 +67,7 @@ public class MachosDAO {
             //2 passp - organizar comdsql e executa-lo
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
 
-            stmt.setInt(1, obj.getNumero());
+            stmt.setString(1, obj.getNumero());
             stmt.setString(2, obj.getLote());
             stmt.setString(3, obj.getCaracteristica());
             stmt.setDate(4, obj.getDatanascimento());
@@ -101,7 +101,7 @@ public class MachosDAO {
             if (rs != null) {
                 while (rs.next()) {
                     Machos n = new Machos();
-                    n.setNumero(rs.getInt("numero"));
+                    n.setNumero(rs.getString("numero"));
                     resultado = true;                    
                     lista.add(n);
                 }

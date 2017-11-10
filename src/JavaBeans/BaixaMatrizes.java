@@ -5,6 +5,8 @@
  */
 package JavaBeans;
 
+import java.sql.Date;
+
 /**
  *
  * @author heito
@@ -20,6 +22,24 @@ public class BaixaMatrizes {
     private String nomepai;
     private String nomemae;
     private String situacao;
+    private String observacao;
+    private Date databaixa;
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public Date getDatabaixa() {
+        return databaixa;
+    }
+
+    public void setDatabaixa(Date databaixa) {
+        this.databaixa = databaixa;
+    }
 
     public Integer getIdmatriz() {
         return idmatriz;

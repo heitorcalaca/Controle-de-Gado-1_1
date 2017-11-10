@@ -426,16 +426,17 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
 
                 for (int i = 0; i < daof.pesquisaFilhote(idMatriz).size(); i++) {
                     if (daof.pesquisaFilhote(idMatriz).get(i).getSituacao().equals("NO")) {
-                        f.setDatanascimento(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getDatanascimento());
-                        f.setProprietario(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getProprietario());
-                        f.setNomepai(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getNomepai());
-                        f.setCaracteristicas(daof.pesquisaFilhote(idMatriz).get(tabelaFilhotes.getSelectedRow()).getCaracteristicas());
+                        f.setDatanascimento(daof.pesquisaFilhote(idMatriz).get(i).getDatanascimento());
+                        f.setProprietario(daof.pesquisaFilhote(idMatriz).get(i).getProprietario());
+                        f.setNomepai(daof.pesquisaFilhote(idMatriz).get(i).getNomepai());
+                        f.setCaracteristicas(daof.pesquisaFilhote(idMatriz).get(i).getCaracteristicas());
 
                         NovaMatrizDesmamada.txtdatanascimento.setText(formato.format(f.getDatanascimento()));
                         NovaMatrizDesmamada.txtproprietario.setText(f.getProprietario());
                         NovaMatrizDesmamada.cmbcaracteristicas.setSelectedItem(f.getCaracteristicas());
                         NovaMatrizDesmamada.txtnomepai.setText(f.getNomepai());
                         NovaMatrizDesmamada.txtnomemae.setText(txtnome.getText());
+                        break;
                     }
                 }
             } else {
@@ -447,6 +448,8 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
 
                 for (int i = 0; i < daof.pesquisaFilhote(idMatriz).size(); i++) {
                     if (daof.pesquisaFilhote(idMatriz).get(i).getSituacao().equals("NO")) {
+                        
+                        System.out.println(daof.pesquisaFilhote(idMatriz).get(i).getDatanascimento());
 
                         f.setDatanascimento(daof.pesquisaFilhote(idMatriz).get(i).getDatanascimento());
                         f.setProprietario(daof.pesquisaFilhote(idMatriz).get(i).getProprietario());
@@ -459,6 +462,7 @@ public class DesmamaFilhote extends javax.swing.JInternalFrame {
                         NovoMachoDesmamado.txtnomepai.setText(f.getNomepai());
                         NovoMachoDesmamado.txtnomemae.setText(txtnome.getText());
                         NovoMachoDesmamado.txtnumeromae.setText(txtnumero.getText());
+                        break;
                     }
 
                 }

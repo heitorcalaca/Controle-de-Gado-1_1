@@ -5,20 +5,29 @@
  */
 package Interfaces;
 
+import DAO.BaixaMatrizDAO;
 import DAO.MatrizesDAO;
 import JavaBeans.Matrizes;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import static Interfaces.ListaMatrizes.tabelaMatrizes;
+import JavaBeans.BaixaMatrizes;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import Utilitários.Listar;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import javax.swing.JTextField;
 
 /**
  *
  * @author heito
  */
 public class ConsultaMatriz extends javax.swing.JInternalFrame {
+
+    SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
     /**
      * Creates new form ConsultaMatriz1
@@ -101,6 +110,11 @@ public class ConsultaMatriz extends javax.swing.JInternalFrame {
         jLabel3.setText("Características");
 
         cmbsituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NO", "VE", "MO", "SU" }));
+        cmbsituacao.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbsituacaoItemStateChanged(evt);
+            }
+        });
 
         jLabel4.setText("Data de Nascimento");
 
@@ -273,11 +287,11 @@ public class ConsultaMatriz extends javax.swing.JInternalFrame {
                             .addComponent(txtnomemae, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,9 +310,9 @@ public class ConsultaMatriz extends javax.swing.JInternalFrame {
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
-    }  
-    
-    
+    }
+
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
         Listar lis = new Listar();
@@ -307,38 +321,53 @@ public class ConsultaMatriz extends javax.swing.JInternalFrame {
 
     private void botaobaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaobaixaActionPerformed
         int resposta = JOptionPane.showConfirmDialog(this.rootPane, "Deseja realmente dar baixa na Matriz?", title, JOptionPane.YES_NO_OPTION);
-        if (resposta == JOptionPane.YES_OPTION)
-        try {
-            //1 passo - guardar os dados da tela no obj matrizes
-            Matrizes obj = new Matrizes();
-            obj.setNumero(txtnumero.getText());
-            obj.setNome(txtnome.getText());
-            obj.setCaracteristicas(txtcaracteristica.getText());
-            obj.setDatanascimento(txtdatanascimento.getText());
-            obj.setProprietario(txtproprietario.getText());
-            obj.setNomepai(txtnomepai.getText());
-            obj.setNomemae(txtnomemae.getText());
-            obj.setSituacao((String) cmbsituacao.getSelectedItem());
-            obj.setObservacao(txtobservação.getText());
-            obj.setIdmatriz(Integer.parseInt(txtcodigo.getText()));
+        if (resposta == JOptionPane.YES_OPTION) {
+            try {
+                Calendar cal = new GregorianCalendar();
 
-            //2 pass0 - criar objeto do tipo matrizesDAO
-            MatrizesDAO dao = new MatrizesDAO();
-            dao.baixarMatriz(obj);
-            JOptionPane.showMessageDialog(this.rootPane, "Baixa Realizado com Sucesso!");
-            dao.excluirMatriz(obj);
+                //1 passo - guardar os dados da tela no obj matrizes
+                Matrizes obj = new Matrizes();
+                obj.setNumero(txtnumero.getText());
+                obj.setNome(txtnome.getText());
+                obj.setCaracteristicas(txtcaracteristica.getText());
+                obj.setDatanascimento(txtdatanascimento.getText());
+                obj.setProprietario(txtproprietario.getText());
+                obj.setNomepai(txtnomepai.getText());
+                obj.setNomemae(txtnomemae.getText());
+                obj.setSituacao((String) cmbsituacao.getSelectedItem());
+                obj.setObservacao(txtobservação.getText());
+                obj.setIdmatriz(Integer.parseInt(txtcodigo.getText()));
+                String dataf = formatoData.format(cal.getTime());
+                Date data = formatoData.parse(dataf);
+                java.sql.Date dataSql = new java.sql.Date(data.getTime());
+                obj.setDatabaixa(dataSql);
 
-        } catch (Exception erro) {
-            System.out.println(erro);
-            JOptionPane.showMessageDialog(this.rootPane, erro);
-        }else if (resposta == JOptionPane.NO_OPTION) {
+                //2 pass0 - criar objeto do tipo matrizesDAO
+                MatrizesDAO dao = new MatrizesDAO();
+                dao.baixarMatriz(obj);
+                JOptionPane.showMessageDialog(this.rootPane, "Baixa Realizado com Sucesso!");
+                dao.excluirMatriz(obj);
+
+            } catch (Exception erro) {
+                System.out.println(erro);
+                JOptionPane.showMessageDialog(this.rootPane, erro);
+            }
+        } else if (resposta == JOptionPane.NO_OPTION) {
             //Usuário clicou em não. Executar o código correspondente.
         }
         this.dispose();
         Listar lis = new Listar();
         lis.ListarNomes();
-        
+
     }//GEN-LAST:event_botaobaixaActionPerformed
+
+    private void cmbsituacaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbsituacaoItemStateChanged
+//        // TODO add your handling code here:
+//        if(cmbsituacao.getSelectedItem().equals("VE")){
+//            JTextField txt = new JTextField();
+//            txt.
+//        }
+    }//GEN-LAST:event_cmbsituacaoItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

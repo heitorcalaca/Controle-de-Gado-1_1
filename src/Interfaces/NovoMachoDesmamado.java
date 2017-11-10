@@ -257,19 +257,19 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
         FilhotesDAO daof = new FilhotesDAO();
         Filhotes f = new Filhotes();
         String numero = txtnumero.getText();
-        if (txtlote.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this.rootPane, "O campo Lote é obrigatório");
-            txtlote.grabFocus();
-        } else if (txtnumero.getText().isEmpty()) {
+        if (txtnumero.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this.rootPane, "O campo Numero é obrigatório");
-            txtnumero.grabFocus();
-        } else if (txtnumero.getText().length() < 3) {
-            JOptionPane.showMessageDialog(this.rootPane, "Insira um número com 3 ou mais dígitos");
             txtnumero.grabFocus();
         } else if (dao.verificarNumero(numero) == true) {
             JOptionPane.showMessageDialog(this.rootPane, "O numero '" + txtnumero.getText() + "' já está cadastrado");
-            DesmamaFilhote.txtnumero.grabFocus();
+            txtnumero.grabFocus();
             txtnumero.setText("");
+        } else if (txtlote.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this.rootPane, "O campo Lote é obrigatório");
+            txtlote.grabFocus();
+        } else if (txtnumero.getText().length() < 3) {
+            JOptionPane.showMessageDialog(this.rootPane, "Insira um número com 3 ou mais dígitos");
+            txtnumero.grabFocus();
         } else if (txtproprietario.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this.rootPane, "O campo Proprietário é obrigatório");
             txtproprietario.grabFocus();
@@ -279,7 +279,7 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
 
                 //1 passo - guardar os dados da tela no obj matrizes
                 Machos obj = new Machos();
-                obj.setNumero(Integer.parseInt(txtnumero.getText()));
+                obj.setNumero(txtnumero.getText());
                 obj.setLote(txtlote.getText());
                 obj.setCaracteristica((String) cmbcaracteristicas.getSelectedItem().toString());
                 Date data = formatoData.parse(txtdatanascimento.getText());
@@ -287,7 +287,7 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
                 obj.setDatanascimento(dataSql);
                 obj.setProprietario(txtproprietario.getText());
                 obj.setNomemae(txtnomemae.getText());
-                obj.setNumeromae(Integer.parseInt(txtnumeromae.getText()));
+                obj.setNumeromae(txtnumeromae.getText());
                 obj.setSituacao((String) cmbsituação.getSelectedItem());
 
                 Date dataD = formatoData.parse(txtdatadesmama.getText());
@@ -318,9 +318,6 @@ public class NovoMachoDesmamado extends javax.swing.JInternalFrame {
 
         }
 
-        Listar lis = new Listar();
-        lis.ListarNomes();
-        this.dispose();
     }//GEN-LAST:event_botaosalvarActionPerformed
     private void botaosairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaosairActionPerformed
         this.dispose();

@@ -13,13 +13,13 @@ import java.sql.Date;
  */
 public class Machos {
     private Integer idMacho;
-    private Integer numero;
+    private String numero;
     private String lote;
     private String caracteristica;
     private Date datanascimento;
     private String proprietario;
     private String nomemae;
-    private Integer numeromae;
+    private String numeromae;
     private String situacao;
 
     public String getSituacao() {
@@ -38,11 +38,11 @@ public class Machos {
         this.idMacho = idMacho;
     }
 
-    public Integer getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(Integer numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -86,11 +86,11 @@ public class Machos {
         this.nomemae = nomemae;
     }
 
-    public Integer getNumeromae() {
+    public String getNumeromae() {
         return numeromae;
     }
 
-    public void setNumeromae(Integer numeromae) {
+    public void setNumeromae(String numeromae) {
         this.numeromae = numeromae;
     }
 

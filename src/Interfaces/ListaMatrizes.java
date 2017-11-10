@@ -323,7 +323,7 @@ public class ListaMatrizes extends javax.swing.JInternalFrame {
                     f.getSexo(),
                     f.getNomepai(),
                     formato.format(f.getDatadesmama()),
-                    f.getNumerofilhote(),
+                    (f.getNumerofilhote()),
                     f.getSituacao(),
                     f.getObservacao()
                 });

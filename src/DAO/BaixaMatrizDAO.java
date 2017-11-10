@@ -7,6 +7,7 @@ package DAO;
 
 import JDBC.ConnectionFactory;
 import JavaBeans.BaixaMatrizes;
+import JavaBeans.Matrizes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -22,14 +23,15 @@ public class BaixaMatrizDAO {
         this.conecta = new ConnectionFactory().conecta;
     }
      //Método Baixar Matriz
-     public void baixarMatriz(BaixaMatrizes obj){
-        try{
-            //comando sql
-            String cmdsql = "INSERT INTO baixamatriz (numero,nome,caracteristicas,datanascimento,proprietario,nomepai,nomemae,situacao) VALUES (?,?,?,?,?,?,?,?)";
-            
-            //organizar cmdsql e executa-lo
+  public void baixarMatriz(Matrizes obj) {
+        System.out.println("To na baixa");
+        try {
+            //1 passo - criar o comando sql
+            String cmdsql = "INSERT INTO baixamatriz (numero,nome,caracteristicas,datanascimento,proprietario,nomepai,nomemae,situacao,idmatriz,observacao) VALUES(?,?,?,?,?,?,?,?,?,?)";
+
+            //2 passp - organizar comdsql e executa-lo
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
-            
+
             stmt.setString(1, obj.getNumero());
             stmt.setString(2, obj.getNome());
             stmt.setString(3, obj.getCaracteristicas());
@@ -38,17 +40,21 @@ public class BaixaMatrizDAO {
             stmt.setString(6, obj.getNomepai());
             stmt.setString(7, obj.getNomemae());
             stmt.setString(8, obj.getSituacao());
-            
-            //executar
+            stmt.setInt(9, obj.getIdmatriz());
+            stmt.setString(10, obj.getObservacao());
+
+            //3 passo - Executar o comando
             stmt.execute();
-            
-            //fechar
+
+            //4 passo - Fexar a conexão
             stmt.close();
-            
-        }catch (SQLException erro){
+
+        } catch (SQLException erro) {
             throw new RuntimeException(erro);
+
         }
     }
+
 }
 
    

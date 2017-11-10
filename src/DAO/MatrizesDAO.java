@@ -241,9 +241,8 @@ public class MatrizesDAO {
             throw new RuntimeException(erro);
         }
     }
-
-    //Método baixar matriz    
     public void baixarMatriz(Matrizes obj) {
+        System.out.println("To na baixa");
         try {
             //1 passo - criar o comando sql
             String cmdsql = "INSERT INTO baixamatriz (numero,nome,caracteristicas,datanascimento,proprietario,nomepai,nomemae,situacao,idmatriz,observacao) VALUES(?,?,?,?,?,?,?,?,?,?)";
@@ -273,7 +272,6 @@ public class MatrizesDAO {
 
         }
     }
-
     public boolean verificarNumero(String numero) {
         boolean resultado = false;
         try {

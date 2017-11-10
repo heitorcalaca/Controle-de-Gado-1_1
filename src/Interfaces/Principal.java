@@ -10,6 +10,11 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Locale;
 import Utilitários.VerificaDesmama;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -292,11 +297,11 @@ public class Principal extends javax.swing.JFrame {
         jdpPrincipal.add(df);
         df.setVisible(true);
         df.setPosicao();
-        
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void relDesmamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relDesmamaActionPerformed
-                // TODO add your handling code here:
+        // TODO add your handling code here:
         try {
             String cmdsql = "SELECT * FROM filhotes where situacao = 'NO' and datadesmama <= CURRENT_DATE";
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
@@ -319,11 +324,11 @@ public class Principal extends javax.swing.JFrame {
         obj.setVisible(true);
         obj.setPosicao();
     }//GEN-LAST:event_menuItem_NovoMachoActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ParseException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

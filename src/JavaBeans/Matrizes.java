@@ -5,6 +5,8 @@
  */
 package JavaBeans;
 
+import java.sql.Date;
+
 /**
  *
  * @author heito
@@ -22,6 +24,15 @@ public class Matrizes {
     private String nomemae;
     private String situacao;
     private String observacao;
+    private Date databaixa;
+
+    public Date getDatabaixa() {
+        return databaixa;
+    }
+
+    public void setDatabaixa(Date databaixa) {
+        this.databaixa = databaixa;
+    }
 
     //getter e setter
 

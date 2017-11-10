@@ -1,0 +1,4 @@
+- Mostrar aviso de desmama apenas uma vez;
+- Criar tela de lista de filhotes, igual lista de matrizes;
+- Criar tela de baixa de filhotes;
+- Bloquar edição da lista de filhotes na tela de desmama

@@ -64,7 +64,7 @@ public class NovoMacho extends javax.swing.JInternalFrame {
         txtnomepai = new javax.swing.JTextField();
         cmbsituação = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        txtdatanascimento = new javax.swing.JTextField();
+        txtdatanascimento = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -119,11 +119,13 @@ public class NovoMacho extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Situação");
 
-        txtdatanascimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtdatanascimentoActionPerformed(evt);
-            }
-        });
+        try {
+            MaskFormatter mascara = new MaskFormatter("##/##/####");
+            mascara.setPlaceholderCharacter('_');
+            txtdatanascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(mascara));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,15 +151,16 @@ public class NovoMacho extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtnumero, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                                 .addGap(138, 138, 138)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtdatanascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtlote, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(18, 18, 18))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(23, 23, 23)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtdatanascimento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtlote, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtnomemae, javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,12 +192,13 @@ public class NovoMacho extends javax.swing.JInternalFrame {
                     .addComponent(cmbcaracteristicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtdatanascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtproprietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cmbsituação, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)))
+                        .addComponent(jLabel8))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtproprietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -243,7 +247,7 @@ public class NovoMacho extends javax.swing.JInternalFrame {
 
                 //1 passo - guardar os dados da tela no obj matrizes
                 Machos obj = new Machos();
-                obj.setNumero(Integer.parseInt(txtnumero.getText()));
+                obj.setNumero(txtnumero.getText());
                 obj.setLote(txtlote.getText());
                 obj.setCaracteristica((String) cmbcaracteristicas.getSelectedItem().toString());
                 Date data = formatoData.parse(txtdatanascimento.getText());
@@ -291,10 +295,6 @@ public class NovoMacho extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_formInternalFrameOpened
 
-    private void txtdatanascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdatanascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtdatanascimentoActionPerformed
-
     public void idFihlote() {
 
     }
@@ -312,7 +312,7 @@ public class NovoMacho extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    public static javax.swing.JTextField txtdatanascimento;
+    private javax.swing.JFormattedTextField txtdatanascimento;
     public static javax.swing.JTextField txtlote;
     public static javax.swing.JTextField txtnomemae;
     public static javax.swing.JTextField txtnomepai;
