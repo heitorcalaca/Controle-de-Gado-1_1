@@ -67,7 +67,7 @@ public class FilhotesDAO {
             String cmdsql = "UPDATE filhotes SET situacao=?, datadesmama=?, numerofilhote=? WHERE idfilhote=?";
             //2 passp - organizar comdsql e executa-lo
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
-            
+
             stmt.setString(1, obj.getSituacao());
             stmt.setDate(2, obj.getDatadesmama());
             stmt.setString(3, obj.getNumerofilhote());
@@ -117,8 +117,6 @@ public class FilhotesDAO {
 
     }
 
-    
-
     public List<Filhotes> pesquisaFilhote(String idMatriz) {
         try {
             List<Filhotes> lista = new ArrayList();
@@ -147,7 +145,7 @@ public class FilhotesDAO {
         }
     }
 
-     public List<Filhotes> pesquisaFilhote(int idFilhote) {
+    public List<Filhotes> pesquisaFilhote(int idFilhote) {
         try {
             List<Filhotes> lista = new ArrayList();
 
@@ -224,6 +222,30 @@ public class FilhotesDAO {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void editarFilhote(Filhotes obj) {
+        try {
+            //1 passo - criar o comando sql
+            String cmdsql = "update filhotes SET proprietario=?, datanascimento=?, nomepai=?, situacao=?, sexo=? WHERE idmatriz=?";
+            //2 passp - organizar comdsql e executa-lo
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+
+            stmt.setString(1, obj.getProprietario());
+            stmt.setDate(2, obj.getDatanascimento());
+            stmt.setString(3, obj.getNomepai());
+            stmt.setString(4, obj.getSituacao());
+            stmt.setString(5, obj.getSexo());
+            //3 passo - Executar o comando
+            stmt.execute();
+
+            //4 passo - Fexar a conexão
+            stmt.close();
+
+        } catch (SQLException erro) {
+            throw new RuntimeException(erro);
+
         }
     }
 

@@ -1,23 +1,21 @@
-
 package DAO;
 
 import Interfaces.NovaMatriz;
 import JDBC.ConnectionFactory;
 import JavaBeans.Matrizes;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.RootPaneUI;
 
-
 //Para resetar auto increment utilize ALTER TABLE table_name ALTER COLUMN auto_increment_column_name RESTART WITH 8
-
-
-
 public class MatrizesDAO {
 
     private Connection conecta;
@@ -241,6 +239,7 @@ public class MatrizesDAO {
             throw new RuntimeException(erro);
         }
     }
+
     public void baixarMatriz(Matrizes obj) {
         System.out.println("To na baixa");
         try {
@@ -272,6 +271,7 @@ public class MatrizesDAO {
 
         }
     }
+
     public boolean verificarNumero(String numero) {
         boolean resultado = false;
         try {
@@ -287,7 +287,7 @@ public class MatrizesDAO {
                 while (rs.next()) {
                     Matrizes n = new Matrizes();
                     n.setNumero(rs.getString("numero"));
-                    resultado = true;                    
+                    resultado = true;
                     lista.add(n);
                 }
             }
@@ -360,7 +360,27 @@ public class MatrizesDAO {
             throw new RuntimeException(erro);
         }
     }
-    
-    
-    
+
+    public List<Matrizes> numerosLivres() {
+        List<Matrizes> lista = new ArrayList();
+        try {
+
+            String cmdSql = "SELECT numero FROM matrizes ORDER BY numero ASC";
+            PreparedStatement stmt = conecta.prepareStatement(cmdSql);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Matrizes m = new Matrizes();
+                m.setNumero(rs.getString("numero"));
+                lista.add(m);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MatrizesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+
+    }
+
 }

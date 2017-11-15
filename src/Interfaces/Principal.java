@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Locale;
 import Utilitários.VerificaDesmama;
+import Utilitários.numerosLivres;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -40,6 +41,9 @@ public class Principal extends javax.swing.JFrame {
         JOptionPane.setDefaultLocale(locale);
     }
 
+    numerosLivres numerosLivres = new numerosLivres();
+
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
